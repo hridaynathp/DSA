@@ -1,0 +1,88 @@
+/*
+Reversing a singly linked list
+This program covers following functionality along with reversal
+1.Reversing linked list
+2.Insert at end of linked list
+3.display linked list
+*/
+
+#include <iostream>
+
+using namespace std;
+
+
+// Self referentioal structure / Node
+struct node {
+    int data;
+    node* next;
+};
+
+// Insert a node at the end of linked list
+node* insertAtEnd(node *head, int data){
+
+    node * temp1 = new node();
+    temp1->data = data;
+    temp1->next = NULL;
+
+    if(head == NULL){
+        head = temp1;
+        return head;
+    }
+
+    node* temp2 = head;
+    while(temp2->next!=NULL)
+    {
+        temp2 = temp2->next;
+    }
+    temp2->next = temp1;
+
+    return head;
+}
+
+// Display linked list
+void display(node * head){
+
+    node* temp = head;
+    while(temp != NULL){
+        cout<<"["<<temp->data<<"]->";
+        temp = temp->next;
+    }
+    cout<<"NULL"<<endl;
+}
+
+// Logic to Reverse a linked list
+node * reverseLinkedList(node* head){
+    node *prev, *curr, *nxt;
+    prev = NULL;
+    curr = head;
+    while(curr!=NULL){
+        nxt = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nxt;
+    }
+    head = prev;
+
+    return prev;
+}
+
+int main()
+{
+    node * head = NULL;
+
+    // Adding Nodes at the end
+    head = insertAtEnd(head, 2);
+    head = insertAtEnd(head, 4);
+    head = insertAtEnd(head, 6);
+    head = insertAtEnd(head, 8);
+
+    cout<<"Before Reversing linked list"<<endl;
+    display(head);
+
+    head = reverseLinkedList(head);
+
+    cout<<"After Reversing linked list"<<endl;
+    display(head);
+
+    return 0;
+}
