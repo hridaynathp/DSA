@@ -49,6 +49,12 @@ void display(){
     cout<<endl;
 }
 
+bool isEmpty(){
+    if(top==-1)
+       return true;
+    return false;
+}
+
 int main()
 {
     push(2);display();
