@@ -1,3 +1,8 @@
+/*
+Program to reverse a string using stack
+This program implemented a class to provide feature of stack (not used STL stack)
+Reverse function is function which uses this stack class and reverse a string
+*/
 #include <iostream>
 #include <string.h>
 
